@@ -1,8 +1,11 @@
 ================
-django-robokassa
+django-robokassa3
 ================
 
-django-robokassa - это приложение для интеграции платежной системы ROBOKASSA в
+*Данный репозиторий является форком более неподдерживаемой библиотеки за авторством https://github.com/kmike*
+*Добавлены поддержка современных версий Django (1.11, 2.0), поддержка Python 3 и тестовый проект.*
+
+**django-robokassa3** - это приложение для интеграции платежной системы ROBOKASSA в
 проекты на Django.
 
 До использования следует ознакомиться с официальной документацией
@@ -14,18 +17,13 @@ ROBOKASSA (http://docs.robokassa.ru/). Приложение реализует
 
 ::
 
-    $ pip install django-robokassa
+    $ pip install django-robokassa3
 
 Потом следует добавить 'robokassa' в INSTALLED_APPS и выполнить ::
 
-    $ python manage.py syncdb
-
-или, если используется South, ::
-
     $ python manage.py migrate
 
-Для работы требуется django >= 1.3.1.
-Используйте django-robokassa версии 0.9.3, если проект на django 1.2.x или django 1.1.x.
+Для работы требуется Django 1.11 или 2.0. Поддерживаются Python 2.7 и >=3.4.
 
 Настройка
 =========
@@ -257,9 +255,10 @@ urls.py
 Разработка
 ==========
 
-Разработка ведется на github: https://github.com/kmike/django-robokassa
+Оригинальная более неподдерживаемая версия библиотеки: https://github.com/kmike/django-robokassa
+Разработка ведётся на GitHub: https://github.com/mpyrev/django-robokassa
 
-Пожелания, идеи, баг-репорты и тд. пишите в трекер: https://github.com/kmike/django-robokassa/issues
+Пожелания, идеи, баг-репорты и тд. пишите в трекер: https://github.com/mpyrev/django-robokassa/issues
 
 Лицензия - MIT.
 

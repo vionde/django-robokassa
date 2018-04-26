@@ -1,18 +1,21 @@
-#coding: utf-8
+# coding: utf-8
+from __future__ import unicode_literals
+
 from unittest import TestCase
 from django.test import TestCase as DjangoTestCase
 from robokassa.forms import RobokassaForm, ResultURLForm
 from robokassa.conf import LOGIN, PASSWORD1, PASSWORD2
 
+
 class RobokassaFormTest(TestCase):
 
     def setUp(self):
-        self.form = RobokassaForm(initial = {
-                       'OutSum': 100.00,
-                       'InvId': 58,
-                       'Desc' : u'Холодильник "Бирюса"',
-                       'Email' : 'vasia@example.com'
-                    })
+        self.form = RobokassaForm(initial={
+            'OutSum': 100.00,
+            'InvId': 58,
+            'Desc' : 'Холодильник "Бирюса"',
+            'Email' : 'vasia@example.com'
+        })
 
     def testSignature(self):
         self.assertEqual(self.form._get_signature_string(),
@@ -32,11 +35,11 @@ class RobokassaFormTest(TestCase):
 class RobokassaFormExtraTest(TestCase):
     def testExtra(self):
         form = RobokassaForm(initial={
-                                'InvId': 58,
-                                'OutSum': 100,
-                                'param1': 'value1',
-                                'param2': 'value2'
-                            })
+            'InvId': 58,
+            'OutSum': 100,
+            'param1': 'value1',
+            'param2': 'value2'
+        })
         self.assertEqual(form._get_signature_string(),
                          '%s:100:58:%s:shpparam1=value1:shpparam2=value2' % (LOGIN, PASSWORD1))
 
@@ -45,12 +48,12 @@ class ResultURLTest(DjangoTestCase):
 
     def testFormExtra(self):
         form = ResultURLForm({
-                'OutSum': '100',
-                'InvId': '58',
-                'SignatureValue': 'B2111A06F6B7A1E090D38367BF7032D9',
-                'shpparam1': 'Vasia',
-                'shpparam2': 'None',
-             })
+            'OutSum': '100',
+            'InvId': '58',
+            'SignatureValue': 'B2111A06F6B7A1E090D38367BF7032D9',
+            'shpparam1': 'Vasia',
+            'shpparam2': 'None',
+        })
         self.assertTrue(form.is_valid())
         self.assertEqual(form._get_signature_string(),
                          '100:58:%s:shpparam1=Vasia:shpparam2=None' % (PASSWORD2))
@@ -60,28 +63,28 @@ class ResultURLTest(DjangoTestCase):
     def testFormValid(self):
 
         self.assertTrue(ResultURLForm({
-                'OutSum': '100',
-                'InvId': '58',
-                'SignatureValue': '877D3BAF8381F70E56638C3BC82580C5',
-                'shpparam1': 'None',
-                'shpparam2': 'None',
-             }).is_valid())
+            'OutSum': '100',
+            'InvId': '58',
+            'SignatureValue': '877D3BAF8381F70E56638C3BC82580C5',
+            'shpparam1': 'None',
+            'shpparam2': 'None',
+        }).is_valid())
 
         self.assertFalse(ResultURLForm({
-                'OutSum': '101',
-                'InvId': '58',
-                'SignatureValue': '877D3BAF8381F70E56638C3BC82580C5',
-                'shpparam1': 'None',
-                'shpparam2': 'None',
-             }).is_valid())
+            'OutSum': '101',
+            'InvId': '58',
+            'SignatureValue': '877D3BAF8381F70E56638C3BC82580C5',
+            'shpparam1': 'None',
+            'shpparam2': 'None',
+        }).is_valid())
 
         self.assertFalse(ResultURLForm({
-                'OutSum': '100',
-                'InvId': '58',
-                'SignatureValue': '877D3BAF8381F70E56638C3BC82580C5',
-                'shpparam1': 'Vasia',
-                'shpparam2': 'None',
-             }).is_valid())
+            'OutSum': '100',
+            'InvId': '58',
+            'SignatureValue': '877D3BAF8381F70E56638C3BC82580C5',
+            'shpparam1': 'Vasia',
+            'shpparam2': 'None',
+        }).is_valid())
 
     def testEmptyFormValid(self):
         self.assertFalse(ResultURLForm().is_valid())

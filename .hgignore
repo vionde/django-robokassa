@@ -8,6 +8,7 @@ syntax: glob
 nbproject/*
 .buildpath
 build.properties
+.idea/*
 
 #temp files
 *.pyc

@@ -1,24 +1,14 @@
-#coding: utf-8
-try:
-    from django.conf.urls.defaults import patterns, url
-except ImportError:
-    from django.conf.urls import patterns, url
-    
+# coding: utf-8
+from __future__ import unicode_literals
 
-urlpatterns = patterns('robokassa.views',
-    url(
-          r'^result/$',
-          'receive_result',
-          name='robokassa_result'
-    ),
-    url(
-          r'^success/$',
-          'success',
-          name='robokassa_success'
-    ),
-    url(
-          r'^fail/$',
-          'fail',
-          name='robokassa_fail'
-    ),
-)
+from django.conf.urls import url
+
+from . import views
+
+app_name = 'robokassa'
+
+urlpatterns = [
+    url(r'^result/$', views.receive_result, name='result'),
+    url(r'^success/$', views.success, name='success'),
+    url(r'^fail/$', views.fail, name='fail'),
+]

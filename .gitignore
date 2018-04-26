@@ -1,6 +1,10 @@
 .tox
 *.pyc
+__pycache__/
 MANIFEST
 build/
 dist/
-django_robokassa.egg-info
+.idea/
+*.sqlite3
+*.bak
+*.egg-info/
