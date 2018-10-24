@@ -9,7 +9,7 @@ from django.utils.six import python_2_unicode_compatible
 class SuccessNotification(models.Model):
     InvId = models.IntegerField('Номер заказа', db_index=True)
     OutSum = models.CharField('Сумма', max_length=15)
-
+    Receipt = models.TextField('Чек', max_length=1000)
     created_at = models.DateTimeField('Дата и время получения уведомления', auto_now_add=True)
 
     class Meta:

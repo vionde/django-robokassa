@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('InvId', models.IntegerField(db_index=True, verbose_name='\u041d\u043e\u043c\u0435\u0440 \u0437\u0430\u043a\u0430\u0437\u0430')),
                 ('OutSum', models.CharField(max_length=15, verbose_name='\u0421\u0443\u043c\u043c\u0430')),
+                ('Receipt', models.TextField(max_length=1000, verbose_name='\u0427\u0435\u043a')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='\u0414\u0430\u0442\u0430 \u0438 \u0432\u0440\u0435\u043c\u044f \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f')),
             ],
             options={

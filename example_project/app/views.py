@@ -16,6 +16,7 @@ def pay_with_robokassa(request, order_id):
         'OutSum': order.total,
         'InvId': order.id,
         'Desc': order.name,
+        'Receipt': order.receipt,
         'Email': request.user.email,
         # 'IncCurrLabel': '',
         # 'Culture': 'ru'
