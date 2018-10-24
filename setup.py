@@ -16,7 +16,7 @@ setup(
     url='https://github.com/mpyrev/django-robokassa',
     license='MIT License',
     description='Приложение для интеграции платежной системы ROBOKASSA в проекты на Django.',
-    long_description=open('README.rst').read() + "\n\n" + open('CHANGES.rst').read(),
+    #long_description=open('README.rst').read() + "\n\n" + open('CHANGES.rst').read(),
 
     install_requires=[
         'Django>=1.11',
