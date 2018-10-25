@@ -16,16 +16,17 @@ setup(
     url='https://github.com/NeKidaem/django-robokassa',
     license='MIT License',
     description='Приложение для интеграции платежной системы ROBOKASSA в проекты на Django.',
-    long_description=open('README.rst').read() + "\n\n" + open('CHANGES.rst').read(),
+    #long_description=open('README.rst').read() + "\n\n" + open('CHANGES.rst').read(),
 
     install_requires=[
-        'Django>=1.11',
+        # 'Django==1.6',
         'six',
     ],
 
     classifiers=(
         'Environment :: Web Environment',
         'Framework :: Django',
+        'Framework :: Django :: 1.6',
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Intended Audience :: Developers',

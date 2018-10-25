@@ -21,6 +21,7 @@ class Migration(migrations.Migration):
                 ('total', models.DecimalField(decimal_places=2, max_digits=15)),
                 ('status', models.CharField(blank=True, max_length=255, null=True)),
                 ('paid_sum', models.DecimalField(blank=True, decimal_places=2, max_digits=15, null=True)),
+                ('receipt', models.TextField(max_length=1000)),
                 ('extra_param', models.CharField(blank=True, max_length=255, null=True)),
             ],
         ),
