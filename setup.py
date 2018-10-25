@@ -6,14 +6,14 @@ from setuptools import setup
 
 
 setup(
-    name='django-robokassa3',
+    name='django-robokassa-receipt',
     version='1.4',
-    author='Mikhail Pyrev',
-    author_email='mikhail.pyrev@gmail.com',
+    author='Kirill Marchenko',
+    author_email='kirill@nekidaem.ru',
 
     packages=['robokassa', 'robokassa.migrations'],
 
-    url='https://github.com/mpyrev/django-robokassa',
+    url='https://github.com/NeKidaem/django-robokassa',
     license='MIT License',
     description='Приложение для интеграции платежной системы ROBOKASSA в проекты на Django.',
     long_description=open('README.rst').read() + "\n\n" + open('CHANGES.rst').read(),
