@@ -34,6 +34,8 @@ class BaseRobokassaForm(forms.Form):
         return extra
 
     def _get_signature(self):
+        print(777)
+        print(md5(self._get_signature_string().encode('utf-8')).hexdigest().upper())
         return md5(self._get_signature_string().encode('utf-8')).hexdigest().upper()
 
     def _get_signature_string(self):
@@ -111,6 +113,8 @@ class RobokassaForm(BaseRobokassaForm):
                 return ''
             return six.text_type(value)
         standard_part = ':'.join([_val('MrchLogin'), _val('OutSum'), _val('InvId'), _val('Receipt'), PASSWORD1])
+        print(666)
+        print(self._append_extra_part(standard_part, _val))
         return self._append_extra_part(standard_part, _val)
 
 
