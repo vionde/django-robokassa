@@ -34,8 +34,8 @@ class BaseRobokassaForm(forms.Form):
         return extra
 
     def _get_signature(self):
-        print(777)
-        print(md5(self._get_signature_string().encode('utf-8')).hexdigest().upper())
+        #print(777)
+        #print(md5(self._get_signature_string().encode('utf-8')).hexdigest().upper())
         return md5(self._get_signature_string().encode('utf-8')).hexdigest().upper()
 
     def _get_signature_string(self):
@@ -113,8 +113,8 @@ class RobokassaForm(BaseRobokassaForm):
                 return ''
             return six.text_type(value)
         standard_part = ':'.join([_val('MrchLogin'), _val('OutSum'), _val('InvId'), _val('Receipt'), PASSWORD1])
-        print(666)
-        print(self._append_extra_part(standard_part, _val))
+        #print(666)
+        #print(self._append_extra_part(standard_part, _val))
         return self._append_extra_part(standard_part, _val)
 
 
@@ -123,7 +123,7 @@ class ResultURLForm(BaseRobokassaForm):
     OutSum = forms.CharField(max_length=15)
     InvId = forms.IntegerField(min_value=0)
     SignatureValue = forms.CharField(max_length=32)
-    Receipt = forms.CharField(max_length=1000)
+    #Receipt = forms.CharField(max_length=1000)
 
     def clean(self):
         try:
@@ -137,7 +137,8 @@ class ResultURLForm(BaseRobokassaForm):
 
     def _get_signature_string(self):
         _val = lambda name: six.text_type(self.cleaned_data[name])
-        standard_part = ':'.join([_val('OutSum'), _val('InvId'), _val('Receipt'), PASSWORD2])
+        #standard_part = ':'.join([_val('OutSum'), _val('InvId'), _val('Receipt'), PASSWORD2])
+        standard_part = ':'.join([_val('OutSum'), _val('InvId'), PASSWORD2])
         return self._append_extra_part(standard_part, _val)
 
 
@@ -148,7 +149,8 @@ class _RedirectPageForm(ResultURLForm):
 
     def _get_signature_string(self):
         _val = lambda name: six.text_type(self.cleaned_data[name])
-        standard_part = ':'.join([_val('OutSum'), _val('InvId'), _val('Receipt'), PASSWORD1])
+        #standard_part = ':'.join([_val('OutSum'), _val('InvId'), _val('Receipt'), PASSWORD1])
+        standard_part = ':'.join([_val('OutSum'), _val('InvId'), PASSWORD1])
         return self._append_extra_part(standard_part, _val)
 
 
@@ -170,4 +172,4 @@ class FailRedirectForm(BaseRobokassaForm):
     OutSum = forms.CharField(max_length=15)
     InvId = forms.IntegerField(min_value=0)
     Culture = forms.CharField(max_length=10)
-    Receipt = forms.CharField(max_length=1000)
+    #Receipt = forms.CharField(max_length=1000)
